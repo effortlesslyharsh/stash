@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "540719129449",
+    "firebase_url": "https://stash-b6362.firebaseio.com",
+    "project_id": "stash-b6362",
+    "storage_bucket": "stash-b6362.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540719129449:android:6b114ab237b48b748193f8",
+        "android_client_info": {
+          "package_name": "com.stash.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540719129449-ol6d47stq26c7jnfffs430e0s23ua28v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stash.application",
+            "certificate_hash": "ff868dd60a760a30d74e9e9c18c328cae530dd75"
+          }
+        },
+        {
+          "client_id": "540719129449-5gjs8sf4isvgfht3e2v3nvpttfmpalro.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb1NOmjVGbb3HEg_I5AN4BOqzdDF1B9ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540719129449-5gjs8sf4isvgfht3e2v3nvpttfmpalro.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
