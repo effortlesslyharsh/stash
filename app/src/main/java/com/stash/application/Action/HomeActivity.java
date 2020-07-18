@@ -1,5 +1,8 @@
 package com.stash.application.Action;
 
+/*
+ * @author harsh mishra
+ * */
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,11 +20,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.stash.application.R;
+import com.stash.application.processors.StashHomeScreenProcessor;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class HomeActivity extends AppCompatActivity implements  View.OnClickListener{
     private static final String TAG = "***************";
     private TextView homeScreenTextView ;
     private Button getStartedButton;
+    private String homeScreenDisplayMessage;
     FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,23 +43,12 @@ public class HomeActivity extends AppCompatActivity implements  View.OnClickList
 
     @Override
     protected void onStart() {
+        if(StringUtils.isBlank(homeScreenDisplayMessage)){
+            StashHomeScreenProcessor processor = new StashHomeScreenProcessor();
+            homeScreenDisplayMessage = processor.getGreetingMessageForHome();
+        }
         super.onStart();
-        db.collection("general")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                homeScreenTextView.setSingleLine(false);
-                                homeScreenTextView.setText((String)document.getData().get("home_welcome_message"));
-                            }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
+
     }
     @Override
     public void onClick(View view)
