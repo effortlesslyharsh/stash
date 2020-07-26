@@ -20,6 +20,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.stash.application.R;
+import com.stash.application.data.models.StashGeneral;
+import com.stash.application.data.utility.StashGeneralDBUtil;
+import com.stash.application.data.utility.StashGeneralDBUtilImpl;
 import com.stash.application.processors.StashHomeScreenProcessor;
 
 import org.apache.commons.lang3.StringUtils;
@@ -46,6 +49,10 @@ public class HomeActivity extends AppCompatActivity implements  View.OnClickList
         if(StringUtils.isBlank(homeScreenDisplayMessage)){
             StashHomeScreenProcessor processor = new StashHomeScreenProcessor();
             homeScreenDisplayMessage = processor.getGreetingMessageForHome();
+            StashGeneralDBUtil stashGeneralDBUtil = new StashGeneralDBUtilImpl();
+            StashGeneral stashGeneral = stashGeneralDBUtil.loadGeneralObjectInstanceFromDB();
+            Log.d("result",stashGeneral.getHomeDisplayMessage()+"::::"+stashGeneral.getStatesIdmap());
+            homeScreenTextView.setText(stashGeneral.getHomeDisplayMessage()==null?"null":stashGeneral.getHomeDisplayMessage());
         }
         super.onStart();
 
